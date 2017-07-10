@@ -25,14 +25,17 @@ class BookList extends Component {
     )
   }
 }
-
-function mapStateToProps(state) {
+//grabbing specific info from redux store 
+function mapStateToProps(store) {
   // Whatever is returned will show up as props inside of BookList
   return {
-    books: state.books
+    books: store.books,
+    // activeBook: store.activeBook,
   }
 }
 
+//map any action i want defined in this component to affect the store
+//dispatch is refering to whole action , when i click on an object i want to return an object created by action to the reducer
 // Anything returned from this function will end up as props on BookList container
 function mapDispatchToProps(dispatch) {
   // Whenever selectBook is called, the result should be passed to all of our reducers

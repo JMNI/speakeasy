@@ -8,7 +8,9 @@ import reducers from '../public/src/reducers';
 // import { makeMainRoutes } from './routes';
 
 // const routes = makeMainRoutes();
+//the reducers gets put into the store to provide redux store / state info?
 const createStoreWithMiddleware = applyMiddleware()(createStore);
+console.log("createStore in index.js",createStore);
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
