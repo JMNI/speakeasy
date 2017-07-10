@@ -11628,7 +11628,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // import { makeMainRoutes } from './routes';
 
 // const routes = makeMainRoutes();
+//the reducers gets put into the store to provide redux store / state info?
 var createStoreWithMiddleware = (0, _redux.applyMiddleware)()(_redux.createStore);
+console.log("createStore in index.js", _redux.createStore);
 
 _reactDom2.default.render(_react2.default.createElement(
   _reactRedux.Provider,
@@ -11647,6 +11649,23 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.selectBook = selectBook;
+//TODO: ADD all functions that will be used by containers with the following (Potential more) categories
+
+// Event 
+// User (friends)
+// Message
+// Location 
+
+
+// Template: 
+// export function FUNCTION (arg){
+//   return {
+//     type : 'reducer_switch_key',
+//     payload : data_you_want
+//   }
+// }
+
+
 function selectBook(book) {
   // selectBook is an ActionCreator, it needs to return an action,
   // an object with a type property
@@ -11807,14 +11826,19 @@ var BookList = function (_Component) {
 
   return BookList;
 }(_react.Component);
+//grabbing specific info from redux store 
 
-function mapStateToProps(state) {
+
+function mapStateToProps(store) {
   // Whatever is returned will show up as props inside of BookList
   return {
-    books: state.books
+    books: store.books
+    // activeBook: store.activeBook,
   };
 }
 
+//map any action i want defined in this component to affect the store
+//dispatch is refering to whole action , when i click on an object i want to return an object created by action to the reducer
 // Anything returned from this function will end up as props on BookList container
 function mapDispatchToProps(dispatch) {
   // Whenever selectBook is called, the result should be passed to all of our reducers
